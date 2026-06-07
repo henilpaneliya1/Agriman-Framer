@@ -1,0 +1,16 @@
+_remote_check/
+
+# Local runtime and editor files
+*.log
+*.tmp
+*.bak
+Thumbs.db
+.DS_Store
+
+# Sensitive local application config
+Source Code/config.php
+Kisan/Source Code/config.php
+
+# Database dumps and local backups
+Database Backup/
+Source Code/Backup/
