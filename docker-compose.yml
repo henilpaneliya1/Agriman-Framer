@@ -1,0 +1,32 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8090:80"
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASS: agrimanpass
+      DB_NAME: agrimanpro
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: agrimanpass
+      MYSQL_DATABASE: agrimanpro
+    volumes:
+      - dbdata:/var/lib/mysql
+      - "./Database Backup/agribuzzpro.sql:/docker-entrypoint-initdb.d/01-agribuzzpro.sql:ro"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-pagrimanpass"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+
+volumes:
+  dbdata:

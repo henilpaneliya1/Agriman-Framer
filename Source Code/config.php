@@ -1,9 +1,9 @@
 <?php
 $config = [
-    'DB_HOST' => 'localhost',
-    'DB_USER' => 'root',
-    'DB_PASS' => '',
-    'DB_NAME' => 'agrimanpro',
+    'DB_HOST' => getenv('DB_HOST') ?: 'localhost',
+    'DB_USER' => getenv('DB_USER') ?: 'root',
+    'DB_PASS' => getenv('DB_PASS') ?: '',
+    'DB_NAME' => getenv('DB_NAME') ?: 'agrimanpro',
 
     'MAILER_SERVER' => 'ded723.hostwindsdns.com',
     'MAILER_LOGINID' => 'agri@projectmailer.xyz',
