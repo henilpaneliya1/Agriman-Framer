@@ -22,6 +22,7 @@
      *
      * @author Jean-Marc Tr�meaux (jm.tremeaux at gmail.com)
      */
+    #[\AllowDynamicProperties]
     class PieChart extends Chart {
         protected $pieCenterX;
         protected $pieCenterY;
@@ -32,8 +33,8 @@
          * @param integer width of the image
          * @param integer height of the image
          */
-        public function PieChart($width = 600, $height = 250) {
-            parent::Chart($width, $height);
+        public function __construct($width = 600, $height = 250) {
+            parent::__construct($width, $height);
             $this->plot->setGraphPadding(new Padding(15, 10, 30, 30));
         }
 

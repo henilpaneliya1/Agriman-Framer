@@ -181,7 +181,7 @@ if(isset($_GET['workerid']))
 								  ?>, PIN - <?php echo $rsedit['pincode']; ?></li>
             <li class="plan-feature"><a href='imgworker/<?php echo $rsedit['biodata']; ?>' target="_blank" class="btn btn-secondary" >Download Biodata</a></li>
 			
-            <li class="plan-feature"><b>Date of Birth:</b> <?php echo date("d-M-Y",strtotime($rsedit['date_of_birth'])); ?></li>
+            <li class="plan-feature"><b>Date of Birth:</b> <?php echo !empty($rsedit['date_of_birth']) ? date("d-M-Y",strtotime($rsedit['date_of_birth'])) : ''; ?></li>
 			
             <li class="plan-feature"><b>Expected Payment:</b> <?php echo $rsedit['expected_salary']; ?>/day </li>
 			

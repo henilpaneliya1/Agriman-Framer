@@ -23,6 +23,7 @@
      * @author Jean-Marc Trémeaux (jm.tremeaux at gmail.com)
      * @Created on 27 july 2007
      */
+    #[\AllowDynamicProperties]
     class Padding {
         /**
          * Top padding.
@@ -52,7 +53,7 @@
          * @param integer Bottom padding
          * @param integer Left padding
          */
-        public function Padding($top, $right = null, $bottom = null, $left = null) {
+        public function __construct($top, $right = null, $bottom = null, $left = null) {
             $this->top = $top;
             if ($right == null) {
                 $this->right = $top;

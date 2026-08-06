@@ -23,6 +23,7 @@
      * @author Jean-Marc Trémeaux (jm.tremeaux at gmail.com)
      * @Created on 27 july 2007
      */
+    #[\AllowDynamicProperties]
     class Rectangle {
         /**
          * Top left X.
@@ -52,11 +53,11 @@
          * @param x2 Right edge coordinate
          * @param y2 Bottom edge coordinate
          */
-        public function Rectangle($x1, $y1, $x2, $y2) {
-            $this->x1 = $x1;
-            $this->y1 = $y1;
-            $this->x2 = $x2;
-            $this->y2 = $y2;
+        public function __construct($x1, $y1, $x2, $y2) {
+            $this->x1 = (int) round($x1);
+            $this->y1 = (int) round($y1);
+            $this->x2 = (int) round($x2);
+            $this->y2 = (int) round($y2);
         }
         
         /**

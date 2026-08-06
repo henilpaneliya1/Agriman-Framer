@@ -23,6 +23,7 @@
      * @author Jean-Marc Trémeaux (jm.tremeaux at gmail.com)
      * Created on 10 may 2007
      */
+    #[\AllowDynamicProperties]
     class XYDataSet extends DataSet {
         private $pointList;
     
@@ -30,7 +31,7 @@
          * Constructor of XYDataSet.
          *
          */
-        public function XYDataSet() {
+        public function __construct() {
             $this->pointList = array();
         }
     

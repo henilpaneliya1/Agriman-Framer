@@ -68,7 +68,7 @@ if(!isset($_GET['workschedule']))
 						        </tr>  
                                  <tr>
 							      <th height="33" align="left"><strong>Date Of Birth:</strong></th>
-							      <td><?php echo date("d-m-Y",strtotime($rsdisp['date_of_birth'])); ?>
+							      <td><?php echo !empty($rsdisp['date_of_birth']) ? date("d-m-Y",strtotime($rsdisp['date_of_birth'])) : ''; ?>
 								</td>
 							    <tr>
 							      <th height="39" align="left"><strong>Contact Number:</strong></th>

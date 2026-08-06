@@ -29,6 +29,7 @@
      *
      * @author Jean-Marc Trémeaux (jm.tremeaux at gmail.com)
      */
+    #[\AllowDynamicProperties]
     abstract class Chart {
         /**
          * The chart configuration.
@@ -51,7 +52,7 @@
          * @param integer width of the image
          * @param integer height of the image
          */
-        protected function Chart($width, $height) {
+        protected function __construct($width, $height) {
             // Initialize the configuration
             $this->config = new ChartConfig();
             

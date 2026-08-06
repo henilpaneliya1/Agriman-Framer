@@ -22,6 +22,7 @@
      *
      * @author Jean-Marc Trémeaux (jm.tremeaux at gmail.com)
      */
+    #[\AllowDynamicProperties]
     class Axis {
         private $min;
         private $max;
@@ -38,7 +39,7 @@
          * @param integer minimum value on the axis
          * @param integer maximum value on the axis
          */
-        public function Axis($min, $max) {
+        public function __construct($min, $max) {
             $this->min = $min;
             $this->max = $max;
 

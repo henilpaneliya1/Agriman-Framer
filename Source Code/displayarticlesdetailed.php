@@ -14,7 +14,7 @@ $rs = mysqli_fetch_array($qsql);
 		<br>
 		<br>
           <h3><?php echo $rs['title']; ?></h3>
-		  <p>Published on <?php echo date("d-M-Y",strtotime($rs['publish_date'])); ?></p>
+		  <p>Published on <?php echo !empty($rs['publish_date']) ? date("d-M-Y",strtotime($rs['publish_date'])) : ''; ?></p>
         </div>
 
       </div>

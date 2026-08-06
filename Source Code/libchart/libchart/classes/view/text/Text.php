@@ -22,6 +22,7 @@
      *
      * @author Jean-Marc Trémeaux (jm.tremeaux at gmail.com)
      */
+    #[\AllowDynamicProperties]
     class Text {
         public $HORIZONTAL_LEFT_ALIGN = 1;
         public $HORIZONTAL_CENTER_ALIGN = 2;
@@ -33,7 +34,7 @@
         /**
          * Creates a new text drawing helper.
          */
-        public function Text() {
+        public function __construct() {
             $baseDir = dirname(__FILE__) . "/../../../";
         
             // Free low-res fonts based on Bitstream Vera <http://dejavu.sourceforge.net/wiki/>
@@ -87,7 +88,7 @@
                 $py += $textHeight;
             }
 
-            imagettftext($img, $fontSize, $angle, $px, $py, $color->getColor($img), $fontFileName, $text);
+            imagettftext($img, $fontSize, $angle, (int) round($px), (int) round($py), $color->getColor($img), $fontFileName, $text);
         }
         
         /**
@@ -123,7 +124,7 @@
 
             $angle = -45;
 
-            imagettftext($img, $fontSize, $angle, $px, $py, $color->getColor($img), $fontFileName, $text);
+            imagettftext($img, $fontSize, $angle, (int) round($px), (int) round($py), $color->getColor($img), $fontFileName, $text);
         }
     }
 ?>

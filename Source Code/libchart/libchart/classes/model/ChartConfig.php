@@ -22,6 +22,7 @@
      *
      * @author Jean-Marc Trémeaux (jm.tremeaux at gmail.com)
      */
+    #[\AllowDynamicProperties]
     class ChartConfig {
         /**
          * Use several colors for a single data set chart (as if it was a multiple data set).
@@ -47,7 +48,7 @@
         /**
          * Creates a new ChartConfig with default options.
          */
-        public function ChartConfig() {
+        public function __construct() {
             $this->useMultipleColor = false;
             $this->showPointCaption = true;
             $this->sortDataPoint = true;

@@ -22,6 +22,7 @@
      *
      * @author Jean-Marc Trémeaux (jm.tremeaux at gmail.com)
      */
+    #[\AllowDynamicProperties]
     class LineChart extends BarChart {
         /**
          * Creates a new line chart.
@@ -30,8 +31,8 @@
          * @param integer width of the image
          * @param integer height of the image
          */
-        public function LineChart($width = 600, $height = 250) {
-            parent::BarChart($width, $height);
+        public function __construct($width = 600, $height = 250) {
+            parent::__construct($width, $height);
 
             $this->plot->setGraphPadding(new Padding(5, 30, 50, 50));
         }
@@ -64,7 +65,7 @@
             
             // Vertical axis
             for ($value = $minValue; $value <= $maxValue; $value += $stepValue) {
-                $y = $graphArea->y2 - ($value - $minValue) * ($graphArea->y2 - $graphArea->y1) / ($this->axis->displayDelta);
+                $y = (int) round($graphArea->y2 - ($value - $minValue) * ($graphArea->y2 - $graphArea->y1) / ($this->axis->displayDelta));
 
                 imagerectangle($img, $graphArea->x1 - 3, $y, $graphArea->x1 - 2, $y + 1, $palette->axisColor[0]->getColor($img));
                 imagerectangle($img, $graphArea->x1 - 1, $y, $graphArea->x1, $y + 1, $palette->axisColor[1]->getColor($img));
@@ -81,7 +82,7 @@
             $columnWidth = ($graphArea->x2 - $graphArea->x1) / ($pointCount - 1);
 
             for ($i = 0; $i < $pointCount; $i++) {
-                $x = $graphArea->x1 + $i * $columnWidth;
+                $x = (int) round($graphArea->x1 + $i * $columnWidth);
 
                 imagerectangle($img, $x - 1, $graphArea->y2 + 2, $x, $graphArea->y2 + 3, $palette->axisColor[0]->getColor($img));
                 imagerectangle($img, $x - 1, $graphArea->y2, $x, $graphArea->y2 + 1, $palette->axisColor[1]->getColor($img));

@@ -136,7 +136,7 @@ if(isset($_GET['editid']))
 									$qsql2 =mysqli_query($con,$sql2);
 								  while($rssql2 = mysqli_fetch_array($qsql2))
 								  {
-									  if($rssql2[city_id] == $rsedit['city_id'] )
+									  if($rssql2['city_id'] == $rsedit['city_id'] )
 									  {
 									  echo "<option value='$rssql2[city_id]' selected>$rssql2[city]</option>";
 									  }

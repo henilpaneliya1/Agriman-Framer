@@ -23,6 +23,7 @@
      * @author Jean-Marc Trémeaux (jm.tremeaux at gmail.com)
      * Created on 30 july 2007
      */
+    #[\AllowDynamicProperties]
     class Caption {
         protected $labelBoxWidth;
         protected $labelBoxHeight;
@@ -39,7 +40,7 @@
         /**
          * Constructor of Caption
          */
-        public function Caption() {
+        public function __construct() {
             $this->labelBoxWidth = 15;
             $this->labelBoxHeight = 15;
         }

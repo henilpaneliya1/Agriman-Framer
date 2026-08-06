@@ -2,6 +2,7 @@
 require 'PHPMailer-master/PHPMailerAutoload.php';
 
 $mail = new PHPMailer;
+$mail->Timeout = 5; // fail fast if the SMTP server is unreachable
 
 //$mail->SMTPDebug = 3;                               // Enable verbose debug output
 

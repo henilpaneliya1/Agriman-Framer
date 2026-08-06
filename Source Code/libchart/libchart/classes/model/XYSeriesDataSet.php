@@ -24,6 +24,7 @@
      * @author Jean-Marc Trémeaux (jm.tremeaux at gmail.com)
      * Created on 20 july 2007
      */
+    #[\AllowDynamicProperties]
     class XYSeriesDataSet extends DataSet {
         /**
          * List of titles
@@ -39,7 +40,7 @@
          * Constructor of XYSeriesDataSet.
          *
          */
-        public function XYSeriesDataSet() {
+        public function __construct() {
             $this->titleList = array();
             $this->serieList = array();
         }

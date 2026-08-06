@@ -47,6 +47,7 @@
      * @author Jean-Marc Trémeaux (jm.tremeaux at gmail.com)
      * Created on 27 july 2007
      */
+    #[\AllowDynamicProperties]
     class Plot {
         // Style properties
         protected $title;
@@ -145,7 +146,7 @@
          * @param integer width of the image
          * @param integer height of the image
          */
-        public function Plot($width, $height) {
+        public function __construct($width, $height) {
             $this->width = $width;
             $this->height = $height;
 

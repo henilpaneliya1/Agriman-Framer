@@ -161,7 +161,7 @@ $rsworker = mysqli_fetch_array($qsqlworker);
 								  $qsqlcty = mysqli_query($con,$sqlcty);
 								  $rscty = mysqli_fetch_array($qsqlcty);	
 								  
-								 echo ucfirst($rsworker['name']) ."<br>".
+								 echo ucfirst($rsworker['name'] ?? '') ."<br>".
 								      $rsworker['address'] ."<br>".
 								      $rscty['city'] ."<br>".
 								      $rsst['state'] ."<br>". 
@@ -183,7 +183,7 @@ $rsworker = mysqli_fetch_array($qsqlworker);
 								  $qsqlscty = mysqli_query($con,$sqlscty);
 								  $rsscty = mysqli_fetch_array($qsqlscty);	
 								  
-								 echo ucfirst($rsseller['seller_name']) ."<br>".
+								 echo ucfirst($rsseller['seller_name'] ?? '') ."<br>".
 								      $rsseller['seller_address'] ."<br>".
 								      $rsscty['city'] ."<br>".
 								      $rssst['state'] ."<br>".
@@ -309,7 +309,7 @@ $rsworker = mysqli_fetch_array($qsqlworker);
                                 </td>
 					          </tr>
                               <?php
-							  $fdate =  strtotime($rs['from_date']);
+							  $fdate =  strtotime($rs['from_date'] ?? '');
 							  $dt = date("Y-m-d");
 							  $currdate = strtotime($dt);
                               if($fdate > $currdate)

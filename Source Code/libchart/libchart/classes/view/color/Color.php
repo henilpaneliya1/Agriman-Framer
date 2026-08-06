@@ -22,6 +22,7 @@
      *
      * @author Jean-Marc Trémeaux (jm.tremeaux at gmail.com)
      */
+    #[\AllowDynamicProperties]
     class Color {
         private $red;
         private $green;
@@ -37,7 +38,7 @@
          * @param integer blue [0..255]
          * @param integer alpha [0..255]
          */
-        public function Color($red, $green, $blue, $alpha = 0) {
+        public function __construct($red, $green, $blue, $alpha = 0) {
             $this->red = (int) $red;
             $this->green = (int) $green;
             $this->blue = (int) $blue;
