@@ -60,6 +60,14 @@ if(isset($_GET['category_id']))
 }
 ?>
             <div class="row">
+              <div class="col-lg-12">
+                <div class="info w-100">
+                  <h6>Search produce:</h6>
+                  <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Search by produce name or description (location optional)..." value="<?php echo htmlspecialchars($_GET['keyword'] ?? ''); ?>">
+                </div>
+              </div>
+            </div>
+            <div class="row">
               <div class="col-lg-3">
                 <div class="info">
                   <h6>Select country:</h6>
@@ -145,15 +153,32 @@ while($rssql3 = mysqli_fetch_array($qsql3))
 <?php
 if(isset($_GET['submit']))
 {
-	$sql = "SELECT * FROM product INNER JOIN seller ON product.seller_id = seller.seller_id  WHERE product.status='Active' and product.quantity>1 AND seller.state_id='$_GET[state]' and seller.country_id='$_GET[country]' and seller.city_id='" . $_GET['city'] . "'";
+	$sql = "SELECT product.* FROM product INNER JOIN seller ON product.seller_id = seller.seller_id  WHERE product.status='Active' and product.quantity>1";
+	if(!empty($_GET['country']))
+	{
+		$sql = $sql . " AND seller.country_id='" . mysqli_real_escape_string($con,$_GET['country']) . "'";
+	}
+	if(!empty($_GET['state']))
+	{
+		$sql = $sql . " AND seller.state_id='" . mysqli_real_escape_string($con,$_GET['state']) . "'";
+	}
+	if(!empty($_GET['city']))
+	{
+		$sql = $sql . " AND seller.city_id='" . mysqli_real_escape_string($con,$_GET['city']) . "'";
+	}
+	if(!empty($_GET['keyword']))
+	{
+		$kw = mysqli_real_escape_string($con,$_GET['keyword']);
+		$sql = $sql . " AND (product.title LIKE '%$kw%' OR product.description LIKE '%$kw%')";
+	}
 	if(isset($_GET['category_id']))
 	{
-		$sql = $sql . " AND product.category_id='$_GET[category_id]'";
+		$sql = $sql . " AND product.category_id='" . mysqli_real_escape_string($con,$_GET['category_id']) . "'";
 	}
   $qsql = mysqli_query($con,$sql);
 	 if(mysqli_num_rows($qsql)  == 0)
 	{
-		echo " <div class='col-lg-12 col-md-12 portfolio-item filter-app'><br><center><h2>No Items to display based on location given...</h2></center></br></div>";
+		echo " <div class='col-lg-12 col-md-12 portfolio-item filter-app'><br><center><h2>No Items to display based on search given...</h2></center></br></div>";
 	}
 }
 else
@@ -251,6 +276,10 @@ function loadcity(id)
 
 function validatesalessearch()
 {
+	if(document.frmsalessearch.keyword.value != "")
+	{
+		return true;
+	}
 	if(document.frmsalessearch.country.value == "")
 	{
 		alert("Kindly select the country to search..");

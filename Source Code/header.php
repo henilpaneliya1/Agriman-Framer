@@ -107,6 +107,13 @@ echo "<li><a href='displaysales.php?category_id=$rscategoryfm[category_id]&categ
 			
             <li><a href="displayworkers.php">Hire</a></li>
 
+            <li class="<?php
+                            if(basename($_SERVER['PHP_SELF']) == "weather.php" )
+                            {
+                              echo ' active ';
+                            }
+                            ?>"><a href="weather.php">Weather</a></li>
+
 <?php
 if(isset($_SESSION['customerid']))
 {
