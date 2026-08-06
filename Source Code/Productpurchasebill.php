@@ -114,7 +114,7 @@ if(isset($_GET['editid']))
 									$qsql3 =mysqli_query($con,$sql3);
 								  while($rssql3= mysqli_fetch_array($qsql3))
 								  {
-									  if($rssql3[state_id] == $rsedit['state_id'] )
+									  if($rssql3['state_id'] == $rsedit['state_id'] )
 									  {
 									  echo "<option value='$rssql3[state_id]' selected>$rssql3[state]</option>";
 									  }

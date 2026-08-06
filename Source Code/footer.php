@@ -1,3 +1,4 @@
+<?php if(!isset($config)) { include_once("config.php"); } ?>
   <!-- ======= Footer ======= -->
   <footer id="footer">
 

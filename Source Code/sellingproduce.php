@@ -100,7 +100,7 @@ if(isset($_GET['editid']))
 	<div class="form-row">
 	
                         <?php
-							if(isset($_SESSION[adminid] ))
+							if(isset($_SESSION['adminid'] ))
 							{
 						?>
 	<div class="col-md-12 form-group">

@@ -15,10 +15,10 @@ if($_SESSION['randnumber']  == $_POST['randnumber'])
 		}
 		$insid = mysqli_insert_id($con);
 		
-			$buyingproduct = $_POST['buyingproduct'];
+			$buyingproduct = isset($_POST['buyingproduct']) ? $_POST['buyingproduct'] : array();
 		if(isset($_SESSION['customerid']))
 		{
-			for($icount=0; $icount < count($_POST['buyingproduct']); $icount++)
+			for($icount=0; $icount < count($buyingproduct); $icount++)
 			{
 				 $sql = "UPDATE product_purchase_record SET status='Active', product_purchase_bill_id='$insid' WHERE customer_id='$_SESSION[customerid]' AND status='Pending' AND purchase_record_id='$buyingproduct[$icount]'";
 				mysqli_query($con,$sql);
@@ -26,7 +26,7 @@ if($_SESSION['randnumber']  == $_POST['randnumber'])
 		}
 		if(isset($_SESSION['sellerid']))
 		{
-			for($icount=0; $icount < count($_POST['buyingproduct']); $icount++)
+			for($icount=0; $icount < count($buyingproduct); $icount++)
 			{
 				$sql = "UPDATE product_purchase_record SET status='Active', product_purchase_bill_id='$insid' WHERE seller_id='$_SESSION[sellerid]' AND status='Pending' AND purchase_record_id='$buyingproduct[$icount]'";
 				mysqli_query($con,$sql);	
@@ -81,7 +81,7 @@ $rscustomer = mysqli_fetch_array($qsqlcustomer);
 <?php
 $i=1;
 $tot=0;
-$buyingproduct = $_POST['buyingproduct'];
+$buyingproduct = isset($_POST['buyingproduct']) ? $_POST['buyingproduct'] : array();
 ?>
 							<table class="table table-striped table-bordered"  style="width:100%">
 								<THEAD>
@@ -95,7 +95,7 @@ $buyingproduct = $_POST['buyingproduct'];
 								</THEAD>
 								<TBODY>
 <?php								
-			for($icount=0; $icount < count($_POST['buyingproduct']); $icount++)
+			for($icount=0; $icount < count($buyingproduct); $icount++)
 			{
 					echo "<input type='hidden' name='buyingproduct[]' value='$buyingproduct[$icount]' >";
 				  	$sql = "SELECT * FROM product_purchase_record where customer_id='$_SESSION[customerid]' AND purchase_record_id='$buyingproduct[$icount]' ";

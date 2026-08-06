@@ -1,6 +1,6 @@
 <?php 
 include("header.php");
-if($_SESSION['customerid'] != "" && $_SESSION['sellerid'] != "")
+if(!isset($_SESSION['customerid']) && !isset($_SESSION['sellerid']))
 {
 	echo "<script>window.location='customerloginpanel.php';</script>";
 }
@@ -39,8 +39,8 @@ if($_SESSION['customerid'] != "" && $_SESSION['sellerid'] != "")
 							  {
 							  $sql = "SELECT * FROM product_purchase_bill where seller_id='$_SESSION[sellerid]' ORDER BY product_purchase_bill_id DESC ";
 							  }
-							  $qsql = mysqli_query($con,$sql);
-									if(mysqli_num_rows($qsql)  == 0)
+							  $qsql = isset($sql) ? mysqli_query($con,$sql) : false;
+									if($qsql == false || mysqli_num_rows($qsql)  == 0)
 									{
 										echo "<center>There is no Purchase Report to display!!</center>";
 									}
